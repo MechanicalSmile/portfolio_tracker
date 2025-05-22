@@ -1,31 +1,29 @@
-📈 Portfolio Tracker
-A Python-based financial analysis tool that allows you to evaluate the historical performance and risk profile of a portfolio of assets. It uses market data from Yahoo Finance to calculate key portfolio metrics and fundamentals for each asset.
+# 📈 Portfolio Tracker
 
-🔧 Features
-Load asset tickers from an Excel file
+A Python-based financial analysis tool that allows you to evaluate the historical performance and risk profile of a portfolio of assets. It uses market data from **Yahoo Finance** to calculate key portfolio metrics and fundamentals for each asset.
 
-Fetch historical market data (default: 5 years, daily)
+---
 
-Compute portfolio-level metrics:
+## 🔧 Features
 
-Sharpe Ratio
+- Load asset tickers from an Excel file
+- Fetch historical market data (default: 5 years, daily)
+- Compute portfolio-level metrics:
+  - Sharpe Ratio
+  - Volatility
+  - Average Daily Return
+  - 1Y / 3Y / 5Y Cumulative Returns
+- Analyze individual assets with:
+  - Performance metrics (returns, drawdown, volatility)
+  - Risk ratios (Sharpe, Sortino)
+  - Fundamentals (P/E, P/B, Beta, ROE, Dividend Yield/Rate, Revenue/Earnings Growth, FCF)
 
-Volatility
+---
 
-Average Daily Return
+## 📁 Project Structure
 
-1Y / 3Y / 5Y Cumulative Returns
-
-Analyze individual assets with:
-
-Performance metrics (returns, drawdown, volatility)
-
-Risk ratios (Sharpe, Sortino)
-
-Fundamentals (P/E, P/B, Beta, ROE, Dividend Yield/Rate, Revenue/Earnings Growth, FCF)
-
-📁 Project Structure
-'''portfolio_tracker/
+```
+portfolio_tracker/
 ├── main.py               # Entry point
 ├── data/portfolio.xlsx   # Excel file containing tickers in a column named 'Ticker'
 ├── asset.py              # Asset-level analysis logic
@@ -33,51 +31,73 @@ Fundamentals (P/E, P/B, Beta, ROE, Dividend Yield/Rate, Revenue/Earnings Growth,
 ├── metrics.py            # Core financial metric calculations
 ├── market_data.py        # Market data and fundamentals via yfinance
 ├── data_loader.py        # Load tickers from Excel
-└── README.md             # Documentation'''
-🧠 How It Works
-Ticker Load:
-Loads tickers from data/portfolio.xlsx.
+└── README.md             # Documentation
+```
 
-Market Data Fetch:
-Retrieves historical price data for all tickers using yfinance.
+---
 
-Portfolio Analysis:
-Computes aggregate returns, volatility, and Sharpe ratio.
+## 🧠 How It Works
 
-Asset Analysis:
-Iterates through each ticker to compute:
+1. **Ticker Load**:  
+   Loads tickers from `data/portfolio.xlsx`.
 
-Time-based returns
+2. **Market Data Fetch**:  
+   Retrieves historical price data for all tickers using [`yfinance`](https://github.com/ranaroussi/yfinance).
 
-Risk metrics (Sharpe, Sortino, Max Drawdown)
+3. **Portfolio Analysis**:  
+   Computes aggregate returns, volatility, and Sharpe ratio.
 
-Fundamental ratios (e.g., P/E, P/B, Dividend, FCF)
+4. **Asset Analysis**:  
+   Iterates through each ticker to compute:
+   - Time-based returns
+   - Risk metrics (Sharpe, Sortino, Max Drawdown)
+   - Fundamental ratios (e.g., P/E, P/B, Dividend, FCF)
 
-Formatted Output:
-Cleanly prints all results to the console.
+5. **Formatted Output**:  
+   Cleanly prints all results to the console.
 
-📥 Requirements
+---
+
+## 📥 Requirements
+
 Install required packages using pip:
 
-'''pip install pandas yfinance openpyxl numpy'''
-📊 Example Input
+```bash
+pip install pandas yfinance openpyxl numpy
+```
+
+---
+
+## 📊 Example Input
+
 Your Excel file should look like:
 
-Ticker
-AAPL
-MSFT
-TSLA
+| Ticker |
+|--------|
+| AAPL   |
+| MSFT   |
+| TSLA   |
 
-File path: data/portfolio.xlsx
+File path: `data/portfolio.xlsx`
 
-▶️ Running the Program
-'''python main.py'''
-📌 Notes
-Market data comes from Yahoo Finance and may occasionally contain missing or stale values.
+---
 
-All returns are calculated using adjusted close prices and assume equal weighting across assets.
+## ▶️ Running the Program
 
-Handles None values gracefully for missing fundamentals like dividends or free cash flow.
+```bash
+python main.py
+```
 
-📘 License
+---
+
+## 📌 Notes
+
+- Market data comes from Yahoo Finance and may occasionally contain missing or stale values.
+- All returns are calculated using **adjusted close prices** and assume equal weighting across assets.
+- Handles `None` values gracefully for missing fundamentals like dividends or free cash flow.
+
+---
+
+## 📘 License
+
 MIT License
